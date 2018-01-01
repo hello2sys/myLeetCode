@@ -1,0 +1,11 @@
+#bin/python3
+
+class Solution:
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        num_len=len(bin(num))-2
+        a=pow(2,num_len)-1
+        return a-num
