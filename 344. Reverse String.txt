@@ -1,0 +1,32 @@
+#C
+char* reverseString(char* s) {
+    char c;
+    int len=strlen(s)-1;
+    for(int i=0,j=len;i<j;i++,j--)
+    {
+        c=s[i];
+        s[i]=s[j];
+        s[j]=c;
+    }
+    s[len+1]='\0';
+    return s;
+    
+}
+
+#C++
+class Solution {
+public:
+    string reverseString(string s) {
+        reverse(s.begin(),s.end());
+        return s;
+    }
+};
+
+#python3
+class Solution:
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return s[::-1]
