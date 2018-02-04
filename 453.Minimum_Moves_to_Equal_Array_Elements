@@ -1,0 +1,10 @@
+class Solution:
+    def minMoves(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        mins=min(nums)
+        lens=len(nums)
+        return sum(nums)-mins*lens
+        

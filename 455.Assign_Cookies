@@ -1,0 +1,24 @@
+class Solution:
+    def findContentChildren(self, g, s):
+        """
+        :type g: List[int]
+        :type s: List[int]
+        :rtype: int
+        """
+        sortg=sorted(g)
+        sorts=sorted(s)
+        count=0
+        for i in sortg:
+            flg=False
+            for j in sorts:
+                if j>=i:
+                    sorts.remove(j)
+                    count+=1
+                    flg=True
+                    break
+            if not flg:
+                break
+        return count
+        
+        
+        

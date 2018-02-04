@@ -1,0 +1,14 @@
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  RETURN (
+      # Write your MySQL query statement below.
+      select 
+      max(Salary) 
+      from Employee a
+      where N-1 =
+      (select count(distinct Salary) from Employee b
+       where b.Salary>a.Salary
+       )
+      
+  );
+END

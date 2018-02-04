@@ -1,0 +1,21 @@
+# Write your MySQL query statement below
+select
+b.Department,
+a.Name as Employee,
+b.Salary
+from Employee a
+    inner join 
+(
+select
+b.Id as Id,
+b.Name as Department,
+max(a.Salary) as Salary
+from Employee a
+    inner join Department b
+        on a.DepartmentId=b.Id
+group by 1,2
+) b
+on a.Salary=b.Salary
+and a.DepartmentId=b.Id
+
+

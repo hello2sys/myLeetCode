@@ -1,0 +1,30 @@
+"""
+# Employee info
+class Employee(object):
+    def __init__(self, id, importance, subordinates):
+        # It's the unique id of each node.
+        # unique id of this employee
+        self.id = id
+        # the importance value of this employee
+        self.importance = importance
+        # the id of direct subordinates
+        self.subordinates = subordinates
+"""
+class Solution(object):
+    def getImportance(self, employees, id):
+        """
+        :type employees: Employee
+        :type id: int
+        :rtype: int
+        """
+        self.rint=0
+        def cnt(employees,id):
+            for Emply in employees:
+                if Emply.id==id:
+                    self.rint+=Emply.importance
+                    for sub in Emply.subordinates:
+                        cnt(employees,sub)
+        cnt(employees,id)
+        return self.rint
+                            
+        

@@ -1,0 +1,13 @@
+class Solution(object):
+    def distributeCandies(self, candies):
+        """
+        :type candies: List[int]
+        :rtype: int
+        """
+        lens=len(candies)
+        rint=len(set(candies))
+        if rint>lens/2:
+            return lens/2
+        else:
+            return rint
+        

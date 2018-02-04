@@ -1,0 +1,47 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def mergeTrees(self, t1, t2):
+        """
+        :type t1: TreeNode
+        :type t2: TreeNode
+        :rtype: TreeNode
+        """
+        if t1 is None and t2 is None:
+            return
+        if t1 is None:
+            return t2
+        if t2 is None:
+            return t1
+        rTree=TreeNode(0)
+        rTree.val=t1.val+t2.val
+        rTree.left=self.mergeTrees(t1.left,t2.left)
+        rTree.right=self.mergeTrees(t1.right,t2.right)
+        return rTree
+        
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+struct TreeNode* mergeTrees(struct TreeNode* t1, struct TreeNode* t2) {
+    if(NULL==t1 && NULL==t2)
+        return NULL;
+    if(NULL==t1)
+        return t2;
+    if(NULL==t2)
+        return t1;
+    t1->val+=t2->val;
+    t1->left=mergeTrees(t1->left,t2->left);
+    t1->right=mergeTrees(t1->right,t2->right);
+    return t1;
+    
+}

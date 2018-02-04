@@ -1,0 +1,22 @@
+class Solution:
+    def findWords(self,words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        dic={i:1 for i in 'qwertyuiop'}
+        dic.update({i:2 for i in 'asdfghjkl'})
+        dic.update({i:3 for i in 'zxcvbnm'})
+        dic.update({i:4 for i in '1234567890'})
+        rlist=[]
+        for word in words:
+            wlen=len(word)
+            s=set()
+            for i in range(wlen):
+                s.add(dic[word[i].lower()])
+            if len(s)==1:
+                rlist.append(word)
+        return rlist
+            
+            
+        

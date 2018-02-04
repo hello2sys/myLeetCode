@@ -1,0 +1,18 @@
+class Solution:
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        rlist=[]
+        lens=len(nums)
+        for i in range(lens):
+            if nums[abs(nums[i])-1]<0:
+                continue
+            else:
+                nums[abs(nums[i])-1]=-nums[abs(nums[i])-1]
+        for i,j in enumerate(nums):
+            if j>0:
+                rlist.append(i+1)
+        return rlist
+        

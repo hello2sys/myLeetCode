@@ -1,0 +1,42 @@
+/**
+ * Return an array of size *returnSize.
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* constructRectangle(int area, int* returnSize) {
+    *returnSize=2;
+    int *p=(int*)malloc(*returnSize*sizeof(int));
+    int diff=0;
+    int mindiff=10000000;
+    for(int W=1;W<=area;W++)
+    {
+        int L=area/W;
+        if(L*W!=area || L<W)
+            continue;
+        diff=L-W;
+        if(diff<mindiff)
+        {
+            mindiff=diff;
+            p[0]=L;
+            p[1]=W;
+        }
+    }
+    return p;    
+}
+
+
+class Solution:
+    def constructRectangle(self,area):
+        """
+        :type area: int
+        :rtype: List[int]
+        """
+        sqrt=int(math.sqrt(area))
+        L,W=area,1
+        for i in range(sqrt,0,-1):
+            if area%i==0:
+                L,W=area//i,i
+                break
+        return [L,W]
+                
+                
+        

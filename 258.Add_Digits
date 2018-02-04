@@ -1,0 +1,29 @@
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        rint=num 
+        while True:
+            strnum=str(rint)
+            if len(strnum)==1:
+                return rint
+            rint=sum([int(s) for s in strnum])
+##2                
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        strnum=str(num)
+        if len(strnum)==1:
+            return num
+        return self.addDigits(sum([int(s) for s in strnum]))
+                
+   
+##
+if num==0:
+  return 0
+return 1+(num-1)%9             

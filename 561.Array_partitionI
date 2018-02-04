@@ -1,0 +1,11 @@
+class Solution(object):
+    def arrayPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        sort=sorted(nums)
+        n=len(nums)/2
+        return sum(sort[i] for i in range(0,2*n,2))
+        
+        

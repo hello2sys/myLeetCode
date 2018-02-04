@@ -1,0 +1,15 @@
+class Solution(object):
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        slist=list(s)
+        tlist=list(t)
+        slist.sort()
+        tlist.sort()
+        for a in slist:
+            if tlist[slist.index(a)]<>a:
+                return tlist[slist.index(a)]
+        return tlist[len(s)]

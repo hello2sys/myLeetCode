@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dic={}
+        for ss in s:
+            dic[ss]=dic.get(ss,0)+1
+        rint=0
+        for val in dic.values():
+            if val%2==0:
+                rint+=val
+            elif val%2==1:
+                rint+=val-1
+        return rint+1 if rint<>len(s) else rint
+                
+        
