@@ -1,0 +1,24 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def findTilt(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.sums=0
+        def postOrder(root):
+            if root is None:
+                return 0
+            l=postOrder(root.left)
+            r=postOrder(root.right)
+            self.sums+=abs(l-r)
+            return root.val+l+r
+        postOrder(root)
+        return self.sums
+        

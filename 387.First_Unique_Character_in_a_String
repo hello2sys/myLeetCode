@@ -1,0 +1,13 @@
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dic={}
+        for ss in s:
+            dic[ss]=dic.get(ss,0)+1
+        for i,ss in enumerate(s):
+            if dic[ss]==1:
+                return i
+        return -1

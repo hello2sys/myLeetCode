@@ -1,0 +1,12 @@
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        dic={}
+        for ss in s:
+            dic[ss]=dic.get(ss,0)+1
+        sort=sorted(dic.items(),key=lambda x:x[1],reverse=True)
+        rstr=''.join([key[0]*key[1] for key in sort])
+        return rstr
