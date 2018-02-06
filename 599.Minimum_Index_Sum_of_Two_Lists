@@ -1,0 +1,16 @@
+class Solution(object):
+    def findRestaurant(self, list1, list2):
+        """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+        """
+        rlist=[]
+        minidx=0x011111111
+        dic={j:i for i,j in enumerate(list2)}
+        for k,s1 in enumerate(list1):
+            if s1 in list2:
+                if dic[s1]+k<=minidx:
+                    minidx=dic[s1]+k
+                    rlist.append(s1)
+        return rlist
