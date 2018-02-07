@@ -1,0 +1,24 @@
+class Solution(object):
+    def maximumProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxa=maxb=maxc=None
+        mina=minb=0x7FFFFFFF
+        for num in nums:
+            if num>maxa:
+                maxa,maxb,maxc=num,maxa,maxb
+            elif num>maxb:
+                maxb,maxc=num,maxb
+            elif num>maxc:
+                maxc=num
+            if num<mina:
+                mina,minb=num,mina
+            elif num<minb:
+                minb=num
+        return max(mina*minb*maxa,maxa*maxb*maxc)
+ 
+            
+        
+        

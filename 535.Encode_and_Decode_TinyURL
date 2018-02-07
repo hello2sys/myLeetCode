@@ -1,0 +1,33 @@
+class Codec:
+    address=[]
+    def encode(self, longUrl):
+        """Encodes a URL to a shortened URL.
+        
+        :type longUrl: str
+        :rtype: str
+        """
+        head,tail=longUrl.split('//')
+        tail=tail.split('/')
+        self.address.append(head)
+        self.address.extend(tail[:-1])
+        newAddress=tail[-1]+'##'+str(hash(tail[-1])%1000)
+        return head+'//'+newAddress
+        
+
+    def decode(self, shortUrl):
+        """Decodes a shortened URL to its original URL.
+        
+        :type shortUrl: str
+        :rtype: str
+        """
+        originAddress=shortUrl.split('//')[1]
+        idx=originAddress.index('##')
+        head=self.address[0]
+        address='/'.join(s for s in self.address[1:])
+        del self.address[:]
+        return head+'//'+address+'/'+originAddress[:idx]
+        
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(url))
