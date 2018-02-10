@@ -1,0 +1,16 @@
+class Solution(object):
+    def longestWord(self, words):
+        """
+        :type words: List[str]
+        :rtype: str
+        """
+        wordSet=set([''])
+        lens=0
+        for word in sorted(words):
+            if word[:-1] in wordSet:
+                wordSet.add(word)
+                if len(word)>lens:
+                    lens=len(word)
+                    rstr=word
+        return rstr
+        
