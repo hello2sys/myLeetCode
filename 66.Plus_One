@@ -1,0 +1,27 @@
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        lens=len(digits)
+        c=0
+        a=(digits[lens-1]+1+c)%10
+        c=(digits[lens-1]+1+c)/10
+        digits[lens-1]=a
+        if c:
+            for i in range(lens-2,-1,-1):
+                a=(digits[i]+c)%10
+                c=(digits[i]+c)/10
+                digits[i]=a
+                if c==0:
+                    break
+            if c:
+                rlist=[]
+                rlist.append(c)
+                rlist.extend(digits[:])
+                return rlist
+        return digits
+            
+            
+        
