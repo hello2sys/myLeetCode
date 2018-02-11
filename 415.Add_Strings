@@ -1,0 +1,34 @@
+class Solution(object):
+    def addStrings(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        rstr=[]
+        len1,len2=len(num1)-1,len(num2)-1
+        c=0
+        while len1>=0 and len2>=0:
+            a,b=int(num1[len1]),int(num2[len2])
+            rstr.append((a+b+c)%10)
+            c=(a+b+c)/10
+            len1,len2=len1-1,len2-1
+        while c>0 or len1>=0 or len2>=0:
+            if len1>=0:
+                d=int(num1[len1])
+                rstr.append((d+c)%10)
+                len1-=1
+                c=(d+c)/10
+            if len2>=0:
+                d=int(num2[len2])
+                rstr.append((d+c)%10)
+                len2-=1
+                c=(d+c)/10
+            if len1<0 and len2<0 and c>0:
+                rstr.append(c)
+                c=0
+        return str(int(''.join(str(s) for s in rstr)[::-1]))
+                
+            
+            
+        
