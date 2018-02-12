@@ -1,0 +1,80 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def findSecondMinimumValue(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.rintMin,self.rint=99999,99999
+        def dfs(root):
+            if not root:
+                return
+            if root.val<self.rintMin:
+                self.rintMin,self.rint=root.val,self.rintMin
+            elif root.val==self.rintMin:
+                pass
+            elif root.val<self.rint:
+                self.rint=root.val
+            dfs(root.left)
+            dfs(root.right)
+        dfs(root)
+        if self.rint==self.rintMin or self.rint==99999:
+            return -1
+        return self.rint
+        
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def findSecondMinimumValue(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        rintMin,self.rint=root.val,0x80000000
+        def dfs(root):
+            if not root:
+                return
+            if self.rint>root.val>rintMin:
+                self.rint=root.val
+            dfs(root.left)
+            dfs(root.right)
+        dfs(root)
+        return self.rint if self.rint<>0x80000000 else -1
+        
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def findSecondMinimumValue(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        numSet=set()
+        def dfs(root):
+            if not root:
+                return
+            numSet.add(root.val)
+            dfs(root.left)
+            dfs(root.right)
+        dfs(root)
+        numSet.discard(min(numSet))
+        return min(numSet) if len(numSet)<>0 else -1
+        
