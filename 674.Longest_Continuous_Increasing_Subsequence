@@ -1,0 +1,19 @@
+class Solution(object):
+    def findLengthOfLCIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        rintMax,cnt=1,1
+        lens=len(nums)
+        if lens==0:
+            return 0
+        for i in range(lens-1):
+            if nums[i+1]>nums[i]:
+                cnt+=1
+            else:
+                cnt=1
+            if cnt>rintMax:
+                rintMax=cnt
+        return rintMax
+        

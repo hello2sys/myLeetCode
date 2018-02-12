@@ -1,0 +1,16 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        dic={}
+        rlist=[]
+        for num in nums:
+            dic[num]=dic.get(num,0)+1
+        for num in nums:
+            if dic[num]==1:
+                rlist.append(num)
+        return rlist
+                
+        
