@@ -1,0 +1,21 @@
+class Solution(object):
+    def thirdMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        lens=len(set(nums))
+        if lens==1:
+            return nums[0]
+        if lens==2:
+            return max(nums)
+        max1,max2,max3=-2147483648,-2147483648,-2147483648
+        for num in set(nums):
+            if num>max1:
+                max1,max2,max3=num,max1,max2
+            elif num>max2:
+                max2,max3=num,max2
+            elif num>max3:
+                max3=num
+        return max3
+        
