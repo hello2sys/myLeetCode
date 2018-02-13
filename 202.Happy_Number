@@ -1,0 +1,23 @@
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        numSet=set([])
+        while n:
+            m=0
+            while n:
+                m+=(n%10)**2
+                n/=10
+            if m in numSet:
+                break
+            else:
+                numSet.add(m)
+            n=m
+        if 1 in numSet:
+            return True
+        else:
+            return False
+                
+        
