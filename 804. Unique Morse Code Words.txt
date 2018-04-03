@@ -1,0 +1,18 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        dic={"a":".-","b":"-...","c":"-.-.","d":"-..","e":".","f":"..-.","g":"--.",
+          "h":"....","i":"..","j":".---","k":"-.-","l":".-..","m":"--","n":"-.",
+          "o":"---","p":".--.","q":"--.-","r":".-.","s":"...","t":"-","u":"..-",
+          "v":"...-","w":".--","x":"-..-","y":"-.--","z":"--.."}
+        s=set()
+        for word in words:
+            ans=""
+            for letter in word:
+                ans+=dic[letter]
+            s.add(ans)
+        l=list(s)
+        return len(l)
