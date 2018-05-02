@@ -1,0 +1,19 @@
+class Solution:
+    def numberOfLines(self,widths, S):
+        """
+        :type widths: List[int]
+        :type S: str 
+        :rtype: List[int]
+        """
+        s=0
+        row=0
+        alpbet="abcdefghijklmnopqrstuvwxyz"
+        dic=dict(zip(alpbet,widths))
+        for i in S:
+            s+=dic[i]
+            if s>100:
+                row+=1
+                s=dic[i]
+        if s>0:
+            row+=1
+        return [row,s]
