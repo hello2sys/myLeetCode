@@ -1,0 +1,14 @@
+class Solution:
+    import re
+    def mostCommonWord(self,paragraph, banned):
+        """
+        :type paragraph: str
+        :type banned: List[str]
+        :rtype: str
+        """
+        dic=dict([])
+        for word in re.split(r'[!?\',;.\s]\s*',paragraph):
+            word=word.lower()
+            if word not in banned and word!='':
+                dic[word]=dic.get(word,0)+1
+        return sorted(dic.items(),key=lambda x:x[1],reverse=True)[0][0]
