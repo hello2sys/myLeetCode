@@ -1,0 +1,51 @@
+class Solution:
+    import copy
+    def imageSmoother(self,M):
+        """
+        :type M: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        def smoother(a,b):
+            ret=M[a][b]
+            count=1
+            # 上
+            if a-1>=0:
+                ret+=M[a-1][b]
+                count+=1
+            # 下
+            if a+1<m:
+                ret+=M[a+1][b]
+                count+=1
+            # 左
+            if b-1>=0:
+                ret+=M[a][b-1]
+                count+=1
+            # 右
+            if b+1<n:
+                ret+=M[a][b+1]
+                count+=1
+            #左上
+            if a-1>=0 and b-1>=0:
+                ret+=M[a-1][b-1]
+                count+=1
+            #右上
+            if a-1>=0 and b+1<n:
+                ret+=M[a-1][b+1]
+                count+=1
+            # 左下
+            if a+1<m and b-1>=0:
+                ret+=M[a+1][b-1]
+                count+=1
+            # 右下
+            if a+1<m and b+1<n:
+                ret+=M[a+1][b+1]
+                count+=1
+            #print((ret,count))
+            return int(ret/count)
+        m,n=len(M),len(M[0])
+        N=copy.deepcopy(M)
+        for i in range(m):
+            for j in range(n):
+                N[i][j]=smoother(i,j)
+        return N
+            
