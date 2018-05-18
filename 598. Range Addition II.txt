@@ -1,0 +1,19 @@
+class Solution:
+    def maxCount(self, m, n, ops):
+        """
+        :type m: int
+        :type n: int
+        :type ops: List[List[int]]
+        :rtype: int
+        """
+        a,b=m,n
+        if ops==[]:
+            pass
+        else:
+            for op in ops:
+                x,y=op[0],op[1]
+                if x<a:
+                    a=x
+                if y<b:
+                    b=y
+        return a*b

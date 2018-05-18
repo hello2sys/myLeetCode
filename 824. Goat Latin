@@ -1,0 +1,20 @@
+class Solution:
+    def toGoatLatin(self,S):
+        """
+        :type S: str
+        :rtype: str
+        """
+        vowel="aAeEiIoOuU"
+        words=list(S.split(" "))
+        rstr=[]
+        for i,word in enumerate(words):
+            if word[0] in vowel:
+                pass
+            else:
+                word=list(word)
+                word.append(word[0])
+                word[0]=""
+                word="".join(word)
+            word=word+"ma"+(i+1)*"a"
+            rstr.append(word)
+        return " ".join(rstr)

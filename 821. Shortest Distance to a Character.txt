@@ -1,0 +1,15 @@
+class Solution:
+    def shortestToChar(self, S, C):
+        """
+        :type S: str
+        :type C: str
+        :rtype: List[int]
+        """
+        ret=[]
+        from collections import defaultdict
+        dic=defaultdict(list)
+        for index,a in enumerate(S):
+            dic[a].append(index+1)
+        for index,a in enumerate(S):
+            ret.append(min(abs(index+1-b) for b in dic[C]))
+        return ret 

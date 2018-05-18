@@ -1,0 +1,14 @@
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        row, col = list(map(max, grid)), list(map(max, zip(*grid)))
+        x,y=len(grid),len(grid[0])
+        rint=0
+        for i in range(x):
+            for j in range(y):
+                rint+=min(row[i],col[j])-grid[i][j]
+        return rint
+        

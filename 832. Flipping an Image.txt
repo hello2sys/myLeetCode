@@ -1,0 +1,11 @@
+class Solution:
+    def flipAndInvertImage(self, A):
+        """
+        :type A: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        ret=[]
+        for a in A:
+            ret.append([1-aa for aa in a[::-1]])
+        return ret         
+        
