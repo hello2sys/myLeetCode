@@ -1,0 +1,19 @@
+class Solution(object):
+    def convertToBase7(self, num):
+        """
+        :type num: int
+        :rtype: str
+        """
+        ret=[]
+        flg=False
+        if num==0:
+            return "0"
+        if num<0:
+            flg=True
+            num=abs(num)
+        while num:
+            ret.append(str(num%7))
+            num/=7
+        if flg:
+            ret.append('-')
+        return ''.join(ret)[::-1]
