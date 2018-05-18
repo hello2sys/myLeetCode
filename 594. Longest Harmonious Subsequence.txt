@@ -1,0 +1,18 @@
+class Solution:
+    def findLHS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        from collections import defaultdict
+        dic=defaultdict(int)
+        for num in nums:
+            dic[num]+=1
+        tmp=sorted(dic.items(),key=lambda x:x[0])
+        lens=len(tmp)
+        ret=0
+        for i in range(lens-1):
+            if tmp[i+1][0]-tmp[i][0]==1:
+                    if tmp[i+1][1]+tmp[i][1]>ret:
+                        ret=tmp[i+1][1]+tmp[i][1]
+        return ret        
