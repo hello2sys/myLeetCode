@@ -1,0 +1,9 @@
+class Solution:
+    def smallestRangeI(self, A, K):
+        """
+        :type A: List[int]
+        :type K: int
+        :rtype: int
+        """
+        Max,Min=max(A),min(A)
+        return max(Max-Min-2*K,0)
