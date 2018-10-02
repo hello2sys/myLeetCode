@@ -1,0 +1,9 @@
+class Solution:
+    def isMonotonic(self, A):
+        """
+        :type A: List[int]
+        :rtype: bool
+        """
+        incre=sorted(A,reverse=False)
+        decre=sorted(A,reverse=True)
+        return A==incre or A==decre
