@@ -1,0 +1,17 @@
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        lens=len(nums)
+        tmp=1
+        ret=nums[:]
+        for i in range(0,lens):
+            ret[i]=tmp
+            tmp=nums[i]*tmp
+        tmp=1
+        for i in range(lens-1,-1,-1):
+            ret[i]=ret[i]*tmp
+            tmp=nums[i]*tmp
+        return ret

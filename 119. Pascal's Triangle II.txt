@@ -1,0 +1,22 @@
+class Solution(object):
+    def getRow(self, rowIndex):
+        """
+        :type rowIndex: int
+        :rtype: List[int]
+        """
+        fir,sec=[1],[1,1]
+        if rowIndex==0:
+            return [1]
+        elif rowIndex==1:
+            return [1,1]
+        tmp=[1,1]
+        rowIndex-=1
+        while rowIndex:
+            ret=[]
+            lens=len(tmp)
+            for i in range(lens-1):
+                ret.append(tmp[i]+tmp[i+1])
+            ret=[1]+ret+[1]
+            tmp=ret[:]
+            rowIndex-=1
+        return ret
