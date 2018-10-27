@@ -1,0 +1,30 @@
+class Solution(object):
+    def threeSumClosest(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        nums.sort()
+        lens=len(nums)
+        Min=99999
+        ret=0
+        for i in range(lens-2):
+            j,k=i+1,lens-1
+            while j<k:
+                num=nums[i]+nums[j]+nums[k]-target
+                if abs(num)<Min:
+                    Min=abs(num)
+                    ret=nums[i]+nums[j]+nums[k]
+                if num==0:
+                    ret=nums[i]+nums[j]+nums[k]
+                    j+=1
+                    k-=1
+                elif num<0:
+                    j+=1
+                else:
+                    k-=1
+        return ret
+                    
+                
+        
