@@ -1,0 +1,17 @@
+class Solution:
+    def sortArrayByParityII(self, A):
+        """
+        :type A: List[int]
+        :rtype: List[int]
+        """
+        i,j=0,1
+        ret=[0]*len(A)
+        for a in A:
+            if a%2==1:
+                ret[j]=a
+                j+=2
+            else:
+                ret[i]=a
+                i+=2
+        return ret
+        
