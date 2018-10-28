@@ -1,0 +1,34 @@
+class Solution:
+    def searchRange(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        if len(nums)==0:
+            return [-1,-1]
+        ret=[]
+        left,right=0,len(nums)-1
+        while left<=right:
+            mid=left+(right-left)//2
+            if nums[mid]<target:
+                left=mid+1
+            else:
+                right=mid-1
+        if left<len(nums) and nums[left]==target:
+            ret.append(left)
+        else:
+            ret.append(-1)
+        left,right=0,len(nums)-1
+        while left<=right:
+            mid=left+(right-left)//2
+            if nums[mid]>target:
+                right=mid-1
+            else:
+                left=mid+1
+        if right<len(nums) and nums[right]==target:
+            ret.append(right)
+        else:
+            ret.append(-1)
+        return ret
+        
