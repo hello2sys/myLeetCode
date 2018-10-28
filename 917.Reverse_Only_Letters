@@ -1,0 +1,15 @@
+class Solution:
+    def reverseOnlyLetters(self, S):
+        """
+        :type S: str
+        :rtype: str
+        """
+        stack=[c for c in S if c.isalpha()]
+        tmp=list(S)
+        lens=len(tmp)
+        for i in range(lens):
+            if tmp[i].isalpha():
+                tmp[i]=stack.pop()
+        return "".join(tmp)
+                
+        
