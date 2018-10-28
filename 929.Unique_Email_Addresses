@@ -1,0 +1,15 @@
+class Solution:
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        cnt=set()
+        for url in emails:
+            lcname,doname=url.split("@")
+            lcname=lcname[:lcname.index("+")].replace(".","")
+            new_url=lcname+"@"+doname
+            cnt.add(new_url)
+        return len(cnt)
+            
+        
