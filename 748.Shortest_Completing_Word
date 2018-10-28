@@ -1,0 +1,36 @@
+class Solution:
+    def shortestCompletingWord(self, licensePlate, words):
+        """
+        :type licensePlate: str
+        :type words: List[str]
+        :rtype: str
+        """
+        from collections import defaultdict
+        dict_cnt=defaultdict(int)
+        for a in licensePlate.lower():
+            if a.isalpha():
+                dict_cnt[a]+=1
+        MinL=100
+        ret=None
+        for word in words:
+            flg=False
+            word_cnt=defaultdict(int)
+            for a in word:
+                word_cnt[a]+=1
+            for k,v in dict_cnt.items():
+                if word_cnt[k]!=0 and v<=word_cnt[k]:
+                    flg=True
+                elif word_cnt[k]!=0 and v>word_cnt[k] or word_cnt[k]==0:
+                    flg=False
+                    break
+            if flg:
+                if MinL>len(word):
+                    MinL=len(word)
+                    ret=word
+        return ret
+                    
+                    
+                
+            
+            
+        
