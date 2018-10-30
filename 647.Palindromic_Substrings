@@ -1,0 +1,13 @@
+class Solution(object):
+    def countSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        lens=len(s)
+        ret=lens
+        for i in range(lens):
+            for j in range(i+1,lens):
+                if s[i:j]==s[j:i:-1]:
+                    ret+=1
+        return ret

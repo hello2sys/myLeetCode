@@ -1,0 +1,21 @@
+class Solution(object):
+    def dailyTemperatures(self, T):
+        """
+        :type T: List[int]
+        :rtype: List[int]
+        """
+        lens=len(T)
+        if lens==0:
+            return []
+        stack=[]
+        ret=[0]*lens
+        for i in range(lens-1,-1,-1):
+            while len(stack)!=0 and T[i]>=T[stack[-1]]:
+                stack.pop()
+            if len(stack)!=0:
+                ret[i]=stack[-1]-i
+            stack.append(i)
+        return ret
+            
+            
+        
