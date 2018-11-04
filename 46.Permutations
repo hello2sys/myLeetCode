@@ -1,0 +1,18 @@
+class Solution:
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        self.ret=[]
+        A=[]
+        self.permutation(nums,A)
+        return self.ret
+    def permutation(self,nums,A):
+        if len(nums)==len(A):
+            self.ret.append(A)
+        else:
+            for num in nums:
+                if num not in A:
+                    self.permutation(nums,A+[num])
+        

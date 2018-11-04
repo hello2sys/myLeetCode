@@ -1,0 +1,30 @@
+class Solution:
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        lens=len(prices)
+        if lens<=1:
+            return 0
+        lowest=prices[0]
+        preprofit=[0]*lens
+        maxprofit=0
+        for i in range(1,lens):
+            lowest=min(lowest,prices[i])
+            preprofit[i]=max(preprofit[i-1],prices[i]-lowest)
+        
+        hightest=prices[-1]
+        postprofit=[0]*lens
+        for i in range(lens-2,-1,-1):
+            hightest=max(hightest,prices[i])
+            postprofit[i]=max(postprofit[i+1],hightest-prices[i])
+        for i in range(lens):
+            maxprofit=max(maxprofit,preprofit[i]+postprofit[i])
+        return maxprofit
+        
+                             
+        
+            
+
+
