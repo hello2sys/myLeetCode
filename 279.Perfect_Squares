@@ -1,0 +1,13 @@
+class Solution(object):
+    def numSquares(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp=[float("inf")]*(n+1)
+        for i in range(int(n**0.5)+1):
+            dp[i*i]=1
+        for i in range(n+1):
+            for j in range(int((n-i)**0.5)+1):
+                dp[i+j*j]=min(dp[i+j*j],dp[i]+1)
+        return dp[n]
