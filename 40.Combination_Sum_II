@@ -1,0 +1,26 @@
+class Solution:
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        self.l=[]
+        self.count=0
+        candidates.sort()
+        self.dfs(candidates,target,0,[])
+        return self.l
+        
+    def dfs(self,candidates,target,start,ret):
+        if self.count==target and ret not in self.l:
+            self.l.append(ret)
+            return
+        if self.count>target:
+            return
+        lens=len(candidates)
+        for i in range(start,lens):
+            self.count+=candidates[i]
+            self.dfs(candidates,target,i+1,ret+[candidates[i]])
+            self.count-=candidates[i]
+        
+        
