@@ -1,0 +1,25 @@
+class Solution:
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        if digits=='':
+            return []
+        self.ret=[]
+        self.dic=['','1','abc','def','ghi','jkl','mno','pqrs','tuv','wxyz']
+        self.dfs(digits,[],0)
+        return self.ret
+    
+    def dfs(self,digits,tmp,level):
+        if len(tmp)==len(digits):
+            self.ret.append(''.join(tmp))
+            return
+        if len(tmp)>len(digits):
+            return
+        lens=len(self.dic[int(digits[level])])
+        for i in range(lens):
+                tmp.append(self.dic[int(digits[level])][i])
+                self.dfs(digits,tmp,level+1)
+                tmp.pop()
+        
