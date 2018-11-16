@@ -1,0 +1,21 @@
+class Solution:
+    def subsetsWithDup(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        self.ret=[]
+        nums.sort()
+        self.dfs(nums,0,[])
+        return self.ret
+    def dfs(self,nums,start,tmp):
+        if len(tmp)<=len(nums):
+            self.ret.append(tmp)
+        else:
+            return
+        for i in range(start,len(nums)):
+            if i>start and nums[i]==nums[i-1]:
+                continue
+            self.dfs(nums,i+1,tmp+[nums[i]])
+            
+        
