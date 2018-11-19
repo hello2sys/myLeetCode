@@ -1,0 +1,21 @@
+class Solution:
+    def diStringMatch(self, S):
+        """
+        :type S: str
+        :rtype: List[int]
+        """
+        lens=len(S)
+        ret=[0]*(lens+1)
+        cnt=0
+        for i in range(lens):
+            if S[i]=='I':
+                ret[i]=cnt
+                cnt+=1
+        ret[lens]=cnt
+        cnt+=1
+        for i in range(lens-1,-1,-1):
+            if S[i]=='D':
+                ret[i]=cnt
+                cnt+=1
+        return ret
+        
