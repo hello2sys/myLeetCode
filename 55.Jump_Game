@@ -1,0 +1,20 @@
+class Solution:
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        lens=len(nums)
+        if lens<=1:
+            return True
+        step=nums[0]
+        i=0
+        while step:
+            step-=1
+            i+=1
+            if i<=lens-1 and step<=nums[i]:
+                step=nums[i]
+            if i==lens-1:
+                return True
+        return i==lens-1
+            
