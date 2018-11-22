@@ -1,0 +1,21 @@
+class Solution:
+    def jump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        cur,next,i,cnt=0,0,0,0
+        while i<len(nums):
+            if cur>=len(nums)-1:
+                break
+            while i<=cur:
+                next=max(next,nums[i]+i)
+                i+=1
+            
+            cur=next
+            cnt+=1
+        return cnt
+                
+            
+            
+        
