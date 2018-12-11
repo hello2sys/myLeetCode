@@ -1,0 +1,28 @@
+class Solution:
+    def isAlienSorted(self, words, order):
+        """
+        :type words: List[str]
+        :type order: str
+        :rtype: bool
+        """
+        dic={}
+        for idx,alpha in enumerate(order):
+            dic[alpha]=idx
+        def comp(word1,word2,dic):
+            for i in range(min(len(word1),len(word2))):
+                if dic[word1[i]]>dic[word2[i]]:
+                    return -1
+                elif dic[word1[i]]==dic[word2[i]]:
+                    continue
+                else:
+                    return 1
+            if len(word1)<=len(word2):
+                return 1
+            else:
+                return -1
+        for i in range(len(words)-1):
+            if comp(words[i],words[i+1],dic)==-1:
+                return False
+        return True
+        
+        
