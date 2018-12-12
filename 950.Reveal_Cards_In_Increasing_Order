@@ -1,0 +1,23 @@
+class Solution:
+    def deckRevealedIncreasing(self, deck):
+        """
+        :type deck: List[int]
+        :rtype: List[int]
+        """
+        N=len(deck)
+        deck.sort()
+        queue=list(range(N))
+        cnt=1
+        cmp=[None]*N
+        while queue:
+            t=queue.pop(0)
+            if cnt%2==1:
+                cmp[t]=deck.pop(0)
+            else:
+                queue.append(t)
+            cnt+=1
+        return [cmp[i] for i in range(N)]
+                
+            
+        
+        
