@@ -1,0 +1,9 @@
+class Solution:
+    def repeatedNTimes(self, A: 'List[int]') -> 'int':
+        dic=dict()
+        for num in A:
+            if num not in dic:
+                dic[num]=0
+            else:
+                return num
+        
