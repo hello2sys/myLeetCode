@@ -1,0 +1,8 @@
+class Solution:
+    def fib(self, N: 'int') -> 'int':
+        def Fibonacci(N,ppre,pre):
+            if N==0:
+                return ppre
+            return Fibonacci(N-1,pre,ppre+pre)
+        return Fibonacci(N,0,1)
+        
