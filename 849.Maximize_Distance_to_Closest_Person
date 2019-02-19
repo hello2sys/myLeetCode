@@ -1,0 +1,18 @@
+class Solution:
+    def maxDistToClosest(self, seats: 'List[int]') -> 'int':
+        ans=[0]*len(seats)
+        left=-20000
+        for i in range(len(seats)):
+            if seats[i]==1:
+                left=i
+            else:
+                ans[i]=abs(left-i)
+        right=-20000
+        for i in range(len(seats)-1,-1,-1):
+            if seats[i]==1:
+                right=i
+            else:
+                ans[i]=min(ans[i],abs(right-i))
+        return max(ans)
+                
+        
