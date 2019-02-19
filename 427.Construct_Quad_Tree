@@ -1,0 +1,40 @@
+"""
+# Definition for a QuadTree node.
+class Node:
+    def __init__(self, val, isLeaf, topLeft, topRight, bottomLeft, bottomRight):
+        self.val = val
+        self.isLeaf = isLeaf
+        self.topLeft = topLeft
+        self.topRight = topRight
+        self.bottomLeft = bottomLeft
+        self.bottomRight = bottomRight
+"""
+class Solution:
+    def construct(self, grid: 'List[List[int]]') -> 'Node':
+        def isleaf(grid):
+            _lens=len(grid)
+            _sum=0
+            for i in range(_lens):
+                _sum+=sum(grid[i])
+            if _sum==0:
+                return False
+            if _sum==_lens**2:
+                return True
+            else:
+                return None #not a leaf
+        _lens=len(grid)
+        isLeaf=isleaf(grid)
+        if isLeaf==None:
+            m=_lens//2
+            topleft=self.construct([[grid[i][j] for j in range(m)] for i in range(m)])
+            topright=self.construct([[grid[i][j] for j in range(m,_lens)] for i in range(m)])
+            bottomleft=self.construct([[grid[i][j] for j in range(m)] for i in range(m,_lens)])
+            bottomright=self.construct([[grid[i][j] for j in range(m,_lens)] for i in range(m,_lens)])
+            node=Node(True,False,topleft,topright,bottomleft,bottomright)
+        elif isLeaf==True:
+            node=Node(True,True,None,None,None,None)
+        else:
+            node=Node(False,True,None,None,None,None)
+        return node
+        
+                
