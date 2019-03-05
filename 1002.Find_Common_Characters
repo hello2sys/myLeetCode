@@ -1,0 +1,8 @@
+class Solution:
+    def commonChars(self, A: List[str]) -> List[str]:
+        from collections import Counter
+        count=Counter(A[0])
+        for i in range(1,len(A)):
+            count&=Counter(A[i])
+        return list(count.elements())
+        
