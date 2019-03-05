@@ -1,0 +1,25 @@
+class Solution:
+    def numRookCaptures(self, board: List[List[str]]) -> int:
+        m,n=len(board),len(board[0])
+        a,b=None,None
+        for i in range(m):
+            for j in range(n):
+                if board[i][j]=='R':
+                    a,b=i,j
+                    break
+            if a!=None:
+                break
+        self.count=0
+        def cal(l):
+            for k in l[::-1]:
+                if k=='p':
+                    self.count+=1
+                    break
+                elif k=='B':
+                    break
+        cal(board[i][0:j]) #left
+        cal(board[i][j+1:][::-1]) #right
+        cal([c[j] for c in board[0:i]]) #up
+        cal([c[j] for c in board[i+1:]][::-1]) #down
+        return self.count
+        
